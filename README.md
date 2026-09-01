@@ -12,7 +12,7 @@ python scaffold.py
 
 - [x] **1.** canonicalize_generation_record
 - [x] **2.** binary_expected_calibration_error
-- [ ] **3.** sycophancy_rate
+- [x] **3.** sycophancy_rate
 - [ ] **4.** exact_match_contamination_rate
 - [ ] **5.** max_ngram_overlap
 - [ ] **6.** demographic_parity_gap
