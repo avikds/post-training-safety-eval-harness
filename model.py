@@ -73,8 +73,16 @@ def sycophancy_rate(user_true_bits, user_false_bits):
 
     return float(total_agreement / total_count)
 
-# Step 4 - exact_match_contamination_rate (not yet solved)
-# TODO: implement
+# Step 4 - exact_match_contamination_rate
+def exact_match_contamination_rate(completions, reference_corpus):
+    """Compute the exact-match contamination rate of completions against a reference corpus."""
+    if len(completions) == 0:
+        return 0.0
+
+    reference_set = set(reference_corpus)
+    matches = sum(completion in reference_set for completion in completions)
+
+    return float(matches / len(completions))
 
 # Step 5 - max_ngram_overlap (not yet solved)
 # TODO: implement
