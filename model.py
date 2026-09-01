@@ -203,8 +203,10 @@ def log10_compute(compute):
     """Return the base-10 logarithm of a positive compute value."""
     return float(math.log10(compute))
 
-# Step 10 - count_log10_thresholds_met (not yet solved)
-# TODO: implement
+# Step 10 - count_log10_thresholds_met
+def count_log10_thresholds_met(log10_c, thresholds):
+    """Map a log10 compute value onto a discrete compute band by counting met thresholds."""
+    return int(sum(log10_c >= threshold for threshold in thresholds))
 
 # Step 11 - flagged_eval_names (not yet solved)
 # TODO: implement

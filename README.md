@@ -19,7 +19,7 @@ python scaffold.py
 - [x] **7.** equalized_odds_gap
 - [x] **8.** transformer_training_flops
 - [x] **9.** log10_compute
-- [ ] **10.** count_log10_thresholds_met
+- [x] **10.** count_log10_thresholds_met
 - [ ] **11.** flagged_eval_names
 - [ ] **12.** capability_gate
 - [ ] **13.** assemble_model_card
