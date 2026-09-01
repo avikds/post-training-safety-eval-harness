@@ -239,6 +239,25 @@ def assemble_model_card(metrics, compute_band, flagged_evals, decision):
         "decision": decision,
     }
 
-# Step 14 - release_decision (not yet solved)
-# TODO: implement
+# Step 14 - release_decision
+def release_decision(model_card, thresholds):
+    """Decide ship, report, or pause from a model card using the capability gate plus metric thresholds."""
+    if model_card["decision"] == "pause":
+        return "pause"
+
+    metric_names = [
+        "sycophancy_rate",
+        "ece",
+        "exact_match_contamination",
+        "equalized_odds_gap",
+    ]
+
+    for name in metric_names:
+        if model_card["metrics"][name] >= thresholds[name]:
+            return "pause"
+
+    if model_card["decision"] == "report":
+        return "report"
+
+    return "ship"
 

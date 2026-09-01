@@ -23,7 +23,7 @@ python scaffold.py
 - [x] **11.** flagged_eval_names
 - [x] **12.** capability_gate
 - [x] **13.** assemble_model_card
-- [ ] **14.** release_decision
+- [x] **14.** release_decision
 
 ---
 
