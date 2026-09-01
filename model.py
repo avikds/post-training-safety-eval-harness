@@ -229,8 +229,15 @@ def capability_gate(compute_band, flagged_evals):
     else:
         return "below"
 
-# Step 13 - assemble_model_card (not yet solved)
-# TODO: implement
+# Step 13 - assemble_model_card
+def assemble_model_card(metrics, compute_band, flagged_evals, decision):
+    """Assemble a model-card dict from metrics, compute band, flagged evals, and a gate decision."""
+    return {
+        "metrics": metrics,
+        "compute_band": compute_band,
+        "flagged_evals": flagged_evals,
+        "decision": decision,
+    }
 
 # Step 14 - release_decision (not yet solved)
 # TODO: implement
