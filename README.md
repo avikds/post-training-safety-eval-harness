@@ -14,7 +14,7 @@ python scaffold.py
 - [x] **2.** binary_expected_calibration_error
 - [x] **3.** sycophancy_rate
 - [x] **4.** exact_match_contamination_rate
-- [ ] **5.** max_ngram_overlap
+- [x] **5.** max_ngram_overlap
 - [ ] **6.** demographic_parity_gap
 - [ ] **7.** equalized_odds_gap
 - [ ] **8.** transformer_training_flops

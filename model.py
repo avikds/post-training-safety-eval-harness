@@ -84,8 +84,38 @@ def exact_match_contamination_rate(completions, reference_corpus):
 
     return float(matches / len(completions))
 
-# Step 5 - max_ngram_overlap (not yet solved)
-# TODO: implement
+# Step 5 - max_ngram_overlap
+def max_ngram_overlap(completion, reference_corpus, n):
+    # TODO: Compute the maximum n-gram overlap of a completion against a reference corpus.
+    completion_tokens = completion.split()
+
+    if len(completion_tokens) < n or not reference_corpus:
+        return 0.0
+
+    completion_ngrams = [
+        tuple(completion_tokens[i:i + n])
+        for i in range(len(completion_tokens) - n + 1)
+    ]
+
+    max_overlap = 0.0
+
+    for reference in reference_corpus:
+        reference_tokens = reference.split()
+
+        reference_ngrams = {
+            tuple(reference_tokens[i:i + n])
+            for i in range(len(reference_tokens) - n + 1)
+        }
+
+        matching_count = sum(
+            ngram in reference_ngrams
+            for ngram in completion_ngrams
+        )
+
+        overlap = matching_count / len(completion_ngrams)
+        max_overlap = max(max_overlap, overlap)
+
+    return float(max_overlap)
 
 # Step 6 - demographic_parity_gap (not yet solved)
 # TODO: implement
