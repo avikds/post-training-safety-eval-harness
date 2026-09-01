@@ -196,8 +196,12 @@ def transformer_training_flops(n_params, n_tokens):
     """Estimate transformer training FLOPs from parameter and token counts."""
     return float(6 * n_params * n_tokens)
 
-# Step 9 - log10_compute (not yet solved)
-# TODO: implement
+# Step 9 - log10_compute
+import math
+
+def log10_compute(compute):
+    """Return the base-10 logarithm of a positive compute value."""
+    return float(math.log10(compute))
 
 # Step 10 - count_log10_thresholds_met (not yet solved)
 # TODO: implement
