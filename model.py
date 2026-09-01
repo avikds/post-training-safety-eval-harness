@@ -141,8 +141,55 @@ def demographic_parity_gap(labels, predictions, group_ids):
 
     return float(max(positive_rates) - min(positive_rates))
 
-# Step 7 - equalized_odds_gap (not yet solved)
-# TODO: implement
+# Step 7 - equalized_odds_gap
+def equalized_odds_gap(labels, predictions, group_ids):
+    """Compute the equalized-odds gap from binary labels, predictions, and group ids."""
+    groups = set(group_ids)
+
+    tpr_values = []
+    fpr_values = []
+
+    for group in groups:
+        group_labels = []
+        group_predictions = []
+
+        for label, prediction, group_id in zip(labels, predictions, group_ids):
+            if group_id == group:
+                group_labels.append(label)
+                group_predictions.append(prediction)
+
+        positive_count = sum(group_labels)
+        negative_count = len(group_labels) - positive_count
+
+        if positive_count > 0:
+            true_positives = sum(
+                prediction
+                for label, prediction in zip(group_labels, group_predictions)
+                if label == 1
+            )
+            tpr_values.append(true_positives / positive_count)
+
+        if negative_count > 0:
+            false_positives = sum(
+                prediction
+                for label, prediction in zip(group_labels, group_predictions)
+                if label == 0
+            )
+            fpr_values.append(false_positives / negative_count)
+
+    tpr_gap = (
+        max(tpr_values) - min(tpr_values)
+        if tpr_values
+        else 0.0
+    )
+
+    fpr_gap = (
+        max(fpr_values) - min(fpr_values)
+        if fpr_values
+        else 0.0
+    )
+
+    return float(max(tpr_gap, fpr_gap))
 
 # Step 8 - transformer_training_flops (not yet solved)
 # TODO: implement
