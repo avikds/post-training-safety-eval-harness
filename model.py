@@ -117,8 +117,29 @@ def max_ngram_overlap(completion, reference_corpus, n):
 
     return float(max_overlap)
 
-# Step 6 - demographic_parity_gap (not yet solved)
-# TODO: implement
+# Step 6 - demographic_parity_gap
+def demographic_parity_gap(labels, predictions, group_ids):
+    """Compute the demographic-parity gap from binary labels, predictions, and group ids."""
+    if len(group_ids) == 0:
+        return 0.0
+
+    groups = set(group_ids)
+    positive_rates = []
+
+    for group in groups:
+        group_predictions = [
+            prediction
+            for prediction, group_id in zip(predictions, group_ids)
+            if group_id == group
+        ]
+
+        positive_rate = sum(group_predictions) / len(group_predictions)
+        positive_rates.append(positive_rate)
+
+    if len(positive_rates) <= 1:
+        return 0.0
+
+    return float(max(positive_rates) - min(positive_rates))
 
 # Step 7 - equalized_odds_gap (not yet solved)
 # TODO: implement

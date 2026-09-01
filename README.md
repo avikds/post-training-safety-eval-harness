@@ -15,7 +15,7 @@ python scaffold.py
 - [x] **3.** sycophancy_rate
 - [x] **4.** exact_match_contamination_rate
 - [x] **5.** max_ngram_overlap
-- [ ] **6.** demographic_parity_gap
+- [x] **6.** demographic_parity_gap
 - [ ] **7.** equalized_odds_gap
 - [ ] **8.** transformer_training_flops
 - [ ] **9.** log10_compute
