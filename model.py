@@ -191,8 +191,10 @@ def equalized_odds_gap(labels, predictions, group_ids):
 
     return float(max(tpr_gap, fpr_gap))
 
-# Step 8 - transformer_training_flops (not yet solved)
-# TODO: implement
+# Step 8 - transformer_training_flops
+def transformer_training_flops(n_params, n_tokens):
+    """Estimate transformer training FLOPs from parameter and token counts."""
+    return float(6 * n_params * n_tokens)
 
 # Step 9 - log10_compute (not yet solved)
 # TODO: implement

@@ -17,7 +17,7 @@ python scaffold.py
 - [x] **5.** max_ngram_overlap
 - [x] **6.** demographic_parity_gap
 - [x] **7.** equalized_odds_gap
-- [ ] **8.** transformer_training_flops
+- [x] **8.** transformer_training_flops
 - [ ] **9.** log10_compute
 - [ ] **10.** count_log10_thresholds_met
 - [ ] **11.** flagged_eval_names
