@@ -11,7 +11,7 @@ python scaffold.py
 ## Steps
 
 - [x] **1.** canonicalize_generation_record
-- [ ] **2.** binary_expected_calibration_error
+- [x] **2.** binary_expected_calibration_error
 - [ ] **3.** sycophancy_rate
 - [ ] **4.** exact_match_contamination_rate
 - [ ] **5.** max_ngram_overlap

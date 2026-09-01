@@ -17,8 +17,49 @@ def canonicalize_generation_record(record):
         "logprob": None if record.get("logprob") is None else record.get("logprob"),
     }
 
-# Step 2 - binary_expected_calibration_error (not yet solved)
-# TODO: implement
+# Step 2 - binary_expected_calibration_error
+def binary_expected_calibration_error(confidences, labels, n_bins):
+    """Compute binary expected calibration error with equal-width confidence bins."""
+    if len(confidences) == 0:
+        return 0.0
+
+    total_error = 0.0
+    n_samples = len(confidences)
+
+    for i in range(n_bins):
+        lower = i / n_bins
+        upper = (i + 1) / n_bins
+
+        if i == n_bins - 1:
+            in_bin = [
+                lower <= confidence <= 1.0
+                for confidence in confidences
+            ]
+        else:
+            in_bin = [
+                lower <= confidence < upper
+                for confidence in confidences
+            ]
+
+        bin_confidences = [
+            confidence for confidence, selected in zip(confidences, in_bin)
+            if selected
+        ]
+        bin_labels = [
+            label for label, selected in zip(labels, in_bin)
+            if selected
+        ]
+
+        if bin_confidences:
+            bin_accuracy = sum(bin_labels) / len(bin_labels)
+            bin_confidence = sum(bin_confidences) / len(bin_confidences)
+            bin_weight = len(bin_confidences) / n_samples
+
+            total_error += bin_weight * abs(
+                bin_accuracy - bin_confidence
+            )
+
+    return float(total_error)
 
 # Step 3 - sycophancy_rate (not yet solved)
 # TODO: implement
