@@ -208,8 +208,16 @@ def count_log10_thresholds_met(log10_c, thresholds):
     """Map a log10 compute value onto a discrete compute band by counting met thresholds."""
     return int(sum(log10_c >= threshold for threshold in thresholds))
 
-# Step 11 - flagged_eval_names (not yet solved)
-# TODO: implement
+# Step 11 - flagged_eval_names
+def flagged_eval_names(eval_scores, eval_limits):
+    """Return eval names whose scores meet or exceed their published limits, sorted alphabetically."""
+    flagged = [
+        name
+        for name in eval_scores
+        if name in eval_limits and eval_scores[name] >= eval_limits[name]
+    ]
+
+    return sorted(flagged)
 
 # Step 12 - capability_gate (not yet solved)
 # TODO: implement
