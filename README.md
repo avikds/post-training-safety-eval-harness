@@ -21,7 +21,7 @@ python scaffold.py
 - [x] **9.** log10_compute
 - [x] **10.** count_log10_thresholds_met
 - [x] **11.** flagged_eval_names
-- [ ] **12.** capability_gate
+- [x] **12.** capability_gate
 - [ ] **13.** assemble_model_card
 - [ ] **14.** release_decision
 

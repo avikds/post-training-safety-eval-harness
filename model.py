@@ -219,8 +219,15 @@ def flagged_eval_names(eval_scores, eval_limits):
 
     return sorted(flagged)
 
-# Step 12 - capability_gate (not yet solved)
-# TODO: implement
+# Step 12 - capability_gate
+def capability_gate(compute_band, flagged_evals):
+    """Map compute band and flagged evals to below, report, or pause."""
+    if compute_band >= 3 or len(flagged_evals) >= 2:
+        return "pause"
+    elif compute_band >= 1 or len(flagged_evals) >= 1:
+        return "report"
+    else:
+        return "below"
 
 # Step 13 - assemble_model_card (not yet solved)
 # TODO: implement
